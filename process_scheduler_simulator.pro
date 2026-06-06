@@ -9,22 +9,22 @@ CONFIG += c++17
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-    fcfsscheduler.cpp \
-    main.cpp \
-    mainwindow.cpp \
-    process.cpp \
-    scheduler.cpp \
-    simulator.cpp
+    Sources/fcfsscheduler.cpp \
+    Sources/main.cpp \
+    Sources/mainwindow.cpp \
+    Sources/process.cpp \
+    Sources/scheduler.cpp \
+    Sources/simulator.cpp
 
 HEADERS += \
-    fcfsscheduler.h \
-    mainwindow.h \
-    process.h \
-    scheduler.h \
-    simulator.h
+    Headers/fcfsscheduler.h \
+    Headers/mainwindow.h \
+    Headers/process.h \
+    Headers/scheduler.h \
+    Headers/simulator.h
 
 FORMS += \
-    mainwindow.ui
+    Forms/mainwindow.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
