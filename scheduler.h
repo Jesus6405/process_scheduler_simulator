@@ -5,7 +5,8 @@
 #include <vector>
 #include <string>
 
-class Scheduler {
+class Scheduler
+{
 public:
     virtual ~Scheduler() = default;
 
