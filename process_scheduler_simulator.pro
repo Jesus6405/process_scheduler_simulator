@@ -11,11 +11,13 @@ CONFIG += c++17
 SOURCES += \
     main.cpp \
     mainwindow.cpp \
-    process.cpp
+    process.cpp \
+    scheduler.cpp
 
 HEADERS += \
     mainwindow.h \
-    process.h
+    process.h \
+    scheduler.h
 
 FORMS += \
     mainwindow.ui
