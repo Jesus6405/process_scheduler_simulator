@@ -14,7 +14,7 @@ Process::Process(int id, int burstTime, int ioBurstTime, int priority, int arriv
     blockedTime(0),
     turnaroundTime(0) {}
 
-// Getters and Setters
+// Getters y Setters
 int Process::getId() const { return id; }
 int Process::getBurstTime() const { return burstTime; }
 int Process::getRemainingTime() const { return remainingTime; }
@@ -29,7 +29,7 @@ int Process::getWaitingTime() const { return waitingTime; }
 int Process::getBlockedTime() const { return blockedTime; }
 int Process::getTurnaroundTime() const { return turnaroundTime; }
 
-// --- Simulation Methods ---
+// --- Métodos de la simulación ---
 
 void Process::decrementRemainingTime()
 {

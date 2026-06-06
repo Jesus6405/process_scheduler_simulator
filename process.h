@@ -13,7 +13,7 @@ enum class ProcessState
 class Process
 {
 private:
-    // Core attributes
+    // Atributos principales
     int id;
     int burstTime;
     int remainingTime;
@@ -23,7 +23,7 @@ private:
     int arrivalTime;
     ProcessState state;
 
-    // Performance metrics
+    // Estadísticas individuales
     int waitingTime;
     int blockedTime;
     int turnaroundTime;
@@ -32,7 +32,7 @@ public:
     // Constructor
     Process(int id, int burstTime, int ioBurstTime, int priority, int arrivalTime);
 
-    // Getters and Setters
+    // Getters y Setters
     int getId() const;
     int getBurstTime() const;
     int getRemainingTime() const;
@@ -47,7 +47,7 @@ public:
     int getBlockedTime() const;
     int getTurnaroundTime() const;
 
-    // Simulation step updates
+    // Métodos para la simulación
     void decrementRemainingTime();
     void decrementIoRemainingTime();
     void resetIoRemainingTime();

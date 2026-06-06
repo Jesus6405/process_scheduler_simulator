@@ -11,25 +11,25 @@ public:
     virtual ~Scheduler() = default;
 
     /**
-     * Core scheduling logic.
-     * @param readyQueue Reference to the simulator's ready queue.
-     * @param currentProcess Reference to the pointer of the process currently in CPU.
-     * @param currentTick The current time step of the simulation.
+     * Lógica central de la planificación
+     * @param readyQueue Referencia a la cola de procesos listos de la simulación
+     * @param currentProcess Referencia al apuntador del proceso actual en la CPU
+     * @param currentTick Tiempo actual de la simulación
      */
     virtual void schedule(std::vector<Process*>& readyQueue, Process*& currentProcess, int currentTick) = 0;
 
     /**
-     * Helper to identify if the algorithm allows preemption.
+     * Indica si el algoritmo es expulsivo (true) o no expulsivo (false)
      */
     virtual bool isPreemptive() const = 0;
 
     /**
-     * Returns the name of the algorithm.
+     * Retorna el nombre del algoritmo
      */
     virtual std::string getName() const = 0;
 
     /**
-     * Returns the description of the algorithm.
+     * Retorna la descripción del algoritmo
      */
     virtual std::string getDescription() const = 0;
 };

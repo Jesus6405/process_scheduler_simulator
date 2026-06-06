@@ -13,13 +13,15 @@ SOURCES += \
     main.cpp \
     mainwindow.cpp \
     process.cpp \
-    scheduler.cpp
+    scheduler.cpp \
+    simulator.cpp
 
 HEADERS += \
     fcfsscheduler.h \
     mainwindow.h \
     process.h \
-    scheduler.h
+    scheduler.h \
+    simulator.h
 
 FORMS += \
     mainwindow.ui
