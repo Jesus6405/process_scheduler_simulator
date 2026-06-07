@@ -33,13 +33,3 @@ bool FCFSScheduler::isPreemptive() const
 {
     return false;
 }
-
-std::string FCFSScheduler::getName() const
-{
-    return "First-Come, First-Served (FCFS)";
-}
-
-std::string FCFSScheduler::getDescription() const
-{
-    return "FCFS se considera el algoritmo de planificación de CPU más simple. En el algoritmo FCFS, el proceso que solicita la CPU primero es el primero en ser asignado.";
-}

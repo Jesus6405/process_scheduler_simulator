@@ -16,14 +16,16 @@ SOURCES += \
     Sources/mainwindow.cpp \
     Sources/process.cpp \
     Sources/scheduler.cpp \
-    Sources/simulator.cpp
+    Sources/simulator.cpp \
+    Sources/sjfscheduler.cpp
 
 HEADERS += \
     Headers/fcfsscheduler.h \
     Headers/mainwindow.h \
     Headers/process.h \
     Headers/scheduler.h \
-    Headers/simulator.h
+    Headers/simulator.h \
+    Headers/sjfscheduler.h
 
 FORMS += \
     Forms/mainwindow.ui

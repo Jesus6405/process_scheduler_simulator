@@ -1,6 +1,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
-#include "Headers/fcfsscheduler.h"
+#include "fcfsscheduler.h"
+#include "sjfscheduler.h"
 
 MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWindow), simulationRunning(false)
 {
@@ -28,6 +29,12 @@ void MainWindow::on_algorithmComboBox_currentIndexChanged(int index)
         ui->algorithmDescription->setText(
             "FCFS (First-Come, First-Served): El proceso que solicita la CPU "
             "primero es el primero en ser asignado. No expulsivo.");
+        break;
+    case 1: // SJF
+        simulator.setScheduler(std::make_unique<SJFScheduler>());
+        ui->algorithmDescription->setText(
+            "SJF (Shortest Job First): Selecciona el proceso con el menor tiempo "
+            "de ráfaga. No es expulsivo.");
         break;
     // Los demás algoritmos aún no están implementados
     default:

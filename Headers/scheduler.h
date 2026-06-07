@@ -3,7 +3,6 @@
 
 #include "process.h"
 #include <vector>
-#include <string>
 
 class Scheduler
 {
@@ -22,16 +21,6 @@ public:
      * Indica si el algoritmo es expulsivo (true) o no expulsivo (false)
      */
     virtual bool isPreemptive() const = 0;
-
-    /**
-     * Retorna el nombre del algoritmo
-     */
-    virtual std::string getName() const = 0;
-
-    /**
-     * Retorna la descripción del algoritmo
-     */
-    virtual std::string getDescription() const = 0;
 };
 
 #endif // SCHEDULER_H

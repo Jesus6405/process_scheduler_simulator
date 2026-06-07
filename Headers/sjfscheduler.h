@@ -1,13 +1,13 @@
-#ifndef FCFS_SCHEDULER_H
-#define FCFS_SCHEDULER_H
+#ifndef SJFSCHEDULER_H
+#define SJFSCHEDULER_H
 
 #include "scheduler.h"
 
-class FCFSScheduler : public Scheduler
+class SJFScheduler : public Scheduler
 {
 public:
     void schedule(std::vector<Process*>& readyQueue, Process*& currentProcess, int currentTick) override;
     bool isPreemptive() const override;
 };
 
-#endif // FCFS_SCHEDULER_H
+#endif // SJFSCHEDULER_H
