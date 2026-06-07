@@ -12,6 +12,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
 {
     ui->setupUi(this);
     on_algorithmComboBox_currentIndexChanged(0);
+    setWindowTitle("Simulador de Planificación de Procesos");
 
     ui->quantumSpinBox->setVisible(false);
     ui->quantumLabel->setVisible(false);
