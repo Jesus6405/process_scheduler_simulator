@@ -3,6 +3,7 @@
 #include "fcfsscheduler.h"
 #include "sjfscheduler.h"
 #include "randomscheduler.h"
+#include "srtfscheduler.h"
 
 MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWindow), simulationRunning(false)
 {
@@ -36,6 +37,12 @@ void MainWindow::on_algorithmComboBox_currentIndexChanged(int index)
         ui->algorithmDescription->setText(
             "SJF (Shortest Job First): Selecciona el proceso con el menor tiempo "
             "de ráfaga. No es expulsivo.");
+        break;
+    case 2: // SRTF
+        simulator.setScheduler(std::make_unique<SRTFScheduler>());
+        ui->algorithmDescription->setText(
+            "SRTF (Shortest Remaining Time First): Versión expulsiva de SJF. "
+            "Selecciona el proceso con el menor tiempo restante.");
         break;
     case 6: // Random
         simulator.setScheduler(std::make_unique<RandomScheduler>());
@@ -202,8 +209,8 @@ void MainWindow::updateProcessTable()
         ui->processTable->setItem(i, 1, new QTableWidgetItem(QString::number(p->getPriority())));
         ui->processTable->setItem(i, 2, new QTableWidgetItem(QString::number(p->getArrivalTime())));
         ui->processTable->setItem(i, 3, new QTableWidgetItem(stateToString(p->getState())));
-        ui->processTable->setItem(i, 4, new QTableWidgetItem(QString::number(p->getBurstTime())));
-        ui->processTable->setItem(i, 5, new QTableWidgetItem(QString::number(p->getIoBurstTime())));
+        ui->processTable->setItem(i, 4, new QTableWidgetItem(QString("%1 / %2").arg(p->getBurstTime()).arg(p->getRemainingTime())));
+        ui->processTable->setItem(i, 5, new QTableWidgetItem(QString("%1 / %2").arg(p->getIoBurstTime()).arg(p->getIoRemainingTime())));
         ui->processTable->setItem(i, 6, new QTableWidgetItem(QString::number(p->getBlockedTime())));
         ui->processTable->setItem(i, 7, new QTableWidgetItem(QString::number(p->getWaitingTime())));
         ui->processTable->setItem(i, 8, new QTableWidgetItem(QString::number(p->getTurnaroundTime())));
