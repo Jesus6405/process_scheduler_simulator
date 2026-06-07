@@ -4,11 +4,15 @@
 #include "sjfscheduler.h"
 #include "randomscheduler.h"
 #include "srtfscheduler.h"
+#include "roundrobinscheduler.h"
 
 MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWindow), simulationRunning(false)
 {
     ui->setupUi(this);
     on_algorithmComboBox_currentIndexChanged(0);
+
+    ui->quantumSpinBox->setVisible(false);
+    ui->quantumLabel->setVisible(false);
 
     simulationTimer = new QTimer(this);
     simulationTimer->setInterval(500); // 500 ms entre ticks en modo auto-play
@@ -23,6 +27,11 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_algorithmComboBox_currentIndexChanged(int index)
 {
+    // Mostrar / ocultar quantum
+    bool isRoundRobin = (index == 3);
+    ui->quantumLabel->setVisible(isRoundRobin);
+    ui->quantumSpinBox->setVisible(isRoundRobin);
+
     // Crear el scheduler correspondiente
     switch (index)
     {
@@ -43,6 +52,12 @@ void MainWindow::on_algorithmComboBox_currentIndexChanged(int index)
         ui->algorithmDescription->setText(
             "SRTF (Shortest Remaining Time First): Versión expulsiva de SJF. "
             "Selecciona el proceso con el menor tiempo restante.");
+        break;
+    case 3: // Round Robin
+        simulator.setScheduler(std::make_unique<RoundRobinScheduler>(ui->quantumSpinBox->value()));
+        ui->algorithmDescription->setText(
+            "Round Robin: Asigna un quantum de tiempo a cada proceso. "
+            "Es expulsivo y circular.");
         break;
     case 6: // Random
         simulator.setScheduler(std::make_unique<RandomScheduler>());

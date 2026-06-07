@@ -19,7 +19,8 @@ SOURCES += \
     Sources/simulator.cpp \
     Sources/sjfscheduler.cpp \
     Sources/randomscheduler.cpp \
-    Sources/srtfscheduler.cpp
+    Sources/srtfscheduler.cpp \
+    Sources/roundrobinscheduler.cpp
 
 HEADERS += \
     Headers/fcfsscheduler.h \
@@ -29,7 +30,8 @@ HEADERS += \
     Headers/simulator.h \
     Headers/sjfscheduler.h \
     Headers/randomscheduler.h \
-    Headers/srtfscheduler.h
+    Headers/srtfscheduler.h \
+    Headers/roundrobinscheduler.h
 
 FORMS += \
     Forms/mainwindow.ui
