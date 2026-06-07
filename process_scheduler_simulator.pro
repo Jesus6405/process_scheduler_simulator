@@ -20,7 +20,8 @@ SOURCES += \
     Sources/sjfscheduler.cpp \
     Sources/randomscheduler.cpp \
     Sources/srtfscheduler.cpp \
-    Sources/roundrobinscheduler.cpp
+    Sources/roundrobinscheduler.cpp \
+    Sources/priorityscheduler.cpp
 
 HEADERS += \
     Headers/fcfsscheduler.h \
@@ -31,7 +32,8 @@ HEADERS += \
     Headers/sjfscheduler.h \
     Headers/randomscheduler.h \
     Headers/srtfscheduler.h \
-    Headers/roundrobinscheduler.h
+    Headers/roundrobinscheduler.h \
+    Headers/priorityscheduler.h
 
 FORMS += \
     Forms/mainwindow.ui

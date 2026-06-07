@@ -5,6 +5,7 @@
 #include "randomscheduler.h"
 #include "srtfscheduler.h"
 #include "roundrobinscheduler.h"
+#include "priorityscheduler.h"
 
 MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWindow), simulationRunning(false)
 {
@@ -58,6 +59,12 @@ void MainWindow::on_algorithmComboBox_currentIndexChanged(int index)
         ui->algorithmDescription->setText(
             "Round Robin: Asigna un quantum de tiempo a cada proceso. "
             "Es expulsivo y circular.");
+        break;
+    case 4: // Priority (No expulsivo)
+        simulator.setScheduler(std::make_unique<PriorityScheduler>());
+        ui->algorithmDescription->setText(
+            "Priority (No expulsivo): Selecciona el proceso con mayor prioridad (menor número). "
+            "No expulsa al proceso en ejecución.");
         break;
     case 6: // Random
         simulator.setScheduler(std::make_unique<RandomScheduler>());
