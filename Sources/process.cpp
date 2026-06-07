@@ -1,4 +1,4 @@
-#include "process.h"
+#include "Headers/process.h"
 
 // Constructor
 Process::Process(int id, int burstTime, int ioBurstTime, int priority, int arrivalTime)

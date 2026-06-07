@@ -1,4 +1,4 @@
-#include "simulator.h"
+#include "Headers/simulator.h"
 #include <cstdlib>
 #include <ctime>
 
@@ -205,3 +205,4 @@ Process* Simulator::getCpuProcess() const { return cpuProcess; }
 const std::vector<Process*>& Simulator::getReadyQueue() const { return readyQueue; }
 const std::vector<Process*>& Simulator::getBlockedQueue() const { return blockedQueue; }
 const std::vector<Process*>& Simulator::getTerminatedQueue() const { return terminatedQueue; }
+const std::vector<Process*>& Simulator::getAllProcesses() const { return allProcesses; }

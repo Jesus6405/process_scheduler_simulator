@@ -43,6 +43,7 @@ public:
     const std::vector<Process*>& getReadyQueue() const;
     const std::vector<Process*>& getBlockedQueue() const;
     const std::vector<Process*>& getTerminatedQueue() const;
+    const std::vector<Process*>& getAllProcesses() const;
 
     // Métricas de rendimiento
     double getCpuUtilization() const;
