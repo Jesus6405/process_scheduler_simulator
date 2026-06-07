@@ -2,6 +2,7 @@
 #include "ui_mainwindow.h"
 #include "fcfsscheduler.h"
 #include "sjfscheduler.h"
+#include "randomscheduler.h"
 
 MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWindow), simulationRunning(false)
 {
@@ -35,6 +36,12 @@ void MainWindow::on_algorithmComboBox_currentIndexChanged(int index)
         ui->algorithmDescription->setText(
             "SJF (Shortest Job First): Selecciona el proceso con el menor tiempo "
             "de ráfaga. No es expulsivo.");
+        break;
+    case 6: // Random
+        simulator.setScheduler(std::make_unique<RandomScheduler>());
+        ui->algorithmDescription->setText(
+            "Random: Selecciona un proceso al azar de la cola de listos. "
+            "No es expulsivo.");
         break;
     // Los demás algoritmos aún no están implementados
     default:
