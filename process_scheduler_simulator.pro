@@ -21,7 +21,8 @@ SOURCES += \
     Sources/randomscheduler.cpp \
     Sources/srtfscheduler.cpp \
     Sources/roundrobinscheduler.cpp \
-    Sources/priorityscheduler.cpp
+    Sources/priorityscheduler.cpp \
+    Sources/prioritypreemptivescheduler.cpp
 
 HEADERS += \
     Headers/fcfsscheduler.h \
@@ -33,7 +34,8 @@ HEADERS += \
     Headers/randomscheduler.h \
     Headers/srtfscheduler.h \
     Headers/roundrobinscheduler.h \
-    Headers/priorityscheduler.h
+    Headers/priorityscheduler.h \
+    Headers/prioritypreemptivescheduler.h
 
 FORMS += \
     Forms/mainwindow.ui

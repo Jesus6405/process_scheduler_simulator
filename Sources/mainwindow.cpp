@@ -6,6 +6,7 @@
 #include "srtfscheduler.h"
 #include "roundrobinscheduler.h"
 #include "priorityscheduler.h"
+#include "prioritypreemptivescheduler.h"
 
 MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWindow), simulationRunning(false)
 {
@@ -66,6 +67,12 @@ void MainWindow::on_algorithmComboBox_currentIndexChanged(int index)
             "Priority (No expulsivo): Selecciona el proceso con mayor prioridad (menor número). "
             "No expulsa al proceso en ejecución.");
         break;
+    case 5: // Priority (Expulsivo)
+        simulator.setScheduler(std::make_unique<PriorityPreemptiveScheduler>());
+        ui->algorithmDescription->setText(
+            "Priority (Expulsivo): Selecciona el proceso con mayor prioridad (menor número). "
+            "Si llega uno con mayor prioridad, expulsa al actual.");
+        break;
     case 6: // Random
         simulator.setScheduler(std::make_unique<RandomScheduler>());
         ui->algorithmDescription->setText(
@@ -76,7 +83,7 @@ void MainWindow::on_algorithmComboBox_currentIndexChanged(int index)
     default:
         simulator.setScheduler(std::make_unique<FCFSScheduler>());
         ui->algorithmDescription->setText(
-            "Algoritmo no implementado aún. Se usa FCFS como respaldo.");
+            "Algoritmo no reconocido. Se usa FCFS en su lugar.");
         break;
     }
 }
