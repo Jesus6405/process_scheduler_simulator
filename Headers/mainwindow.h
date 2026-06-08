@@ -30,6 +30,8 @@ private slots:
     void on_pushButton_clicked();
     void on_horizontalSlider_valueChanged(int value);
 
+    void on_quantumSpinBox_valueChanged(int arg1);
+
 private:
     Ui::MainWindow *ui;
     Simulator simulator;

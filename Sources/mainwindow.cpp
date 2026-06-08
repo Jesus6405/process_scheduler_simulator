@@ -462,3 +462,7 @@ void MainWindow::on_horizontalSlider_valueChanged(int value)
     ui->speedLabel->setText("Tiempo de cada Tick: " + QString::number(value) + "ms");
 }
 
+void MainWindow::on_quantumSpinBox_valueChanged(int arg1)
+{
+    simulator.setScheduler(std::make_unique<RoundRobinScheduler>(arg1));
+}
