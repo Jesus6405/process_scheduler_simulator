@@ -252,8 +252,8 @@ void MainWindow::updateProcessTable()
         ui->processTable->setItem(i, 1, new QTableWidgetItem(QString::number(p->getPriority())));
         ui->processTable->setItem(i, 2, new QTableWidgetItem(QString::number(p->getArrivalTime())));
         ui->processTable->setItem(i, 3, new QTableWidgetItem(stateToString(p->getState())));
-        ui->processTable->setItem(i, 4, new QTableWidgetItem(QString("%1 / %2").arg(p->getBurstTime()).arg(p->getRemainingTime())));
-        ui->processTable->setItem(i, 5, new QTableWidgetItem(QString("%1 / %2").arg(p->getIoBurstTime()).arg(p->getIoRemainingTime())));
+        ui->processTable->setItem(i, 4, new QTableWidgetItem(QString("%1 / %2").arg(p->getRemainingTime()).arg(p->getBurstTime())));
+        ui->processTable->setItem(i, 5, new QTableWidgetItem(QString("%1 / %2").arg(p->getIoRemainingTime()).arg(p->getIoBurstTime())));
         ui->processTable->setItem(i, 6, new QTableWidgetItem(QString::number(p->getBlockedTime())));
         ui->processTable->setItem(i, 7, new QTableWidgetItem(QString::number(p->getWaitingTime())));
         ui->processTable->setItem(i, 8, new QTableWidgetItem(QString::number(p->getTurnaroundTime())));
@@ -454,5 +454,11 @@ void MainWindow::on_pushButton_clicked()
     {
         return;
     }
+}
+
+void MainWindow::on_horizontalSlider_valueChanged(int value)
+{
+    simulationTimer->setInterval(value);
+    ui->speedLabel->setText("Tiempo de cada Tick: " + QString::number(value) + "ms");
 }
 

@@ -26,10 +26,9 @@ private slots:
     void on_pauseButton_clicked();
     void on_resetButton_clicked();
     void simulationTick();
-
     void on_generateButton_clicked();
-
     void on_pushButton_clicked();
+    void on_horizontalSlider_valueChanged(int value);
 
 private:
     Ui::MainWindow *ui;

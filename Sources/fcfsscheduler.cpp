@@ -1,32 +1,23 @@
 #include "fcfsscheduler.h"
-#include <algorithm>
 
-void FCFSScheduler::schedule(std::vector<Process*>& readyQueue, Process*& currentProcess, int currentTick)
-{
-    // FCFS es no expulsivo (Si un proceso tiene la CPU, mantiene la CPU)
+void FCFSScheduler::schedule(std::vector<Process*>& readyQueue, Process*& currentProcess, int currentTick) {
+    // FCFS no es expulsivo. Si ya hay algo corriendo, no hacemos nada.
     if (currentProcess != nullptr)
     {
         return;
     }
 
-    // Si no hay procesos esperando en la cola de listos, la CPU permanece inactiva
+    // Si la cola de listos está vacía, la CPU se queda inactiva
     if (readyQueue.empty())
     {
         return;
     }
 
-    // Como FCFS depende del tiempo de llegada, se busca el proceso que llegó primero
-    auto firstArrivedIt = std::min_element(readyQueue.begin(), readyQueue.end(),
-                                           [](const Process* a, const Process* b) {
-                                               return a->getArrivalTime() < b->getArrivalTime();
-                                           });
-
-    // Se asigna el proceso encontrado a la CPU
-    currentProcess = *firstArrivedIt;
+    currentProcess = readyQueue.front();
     currentProcess->setState(ProcessState::RUNNING);
 
-    // Se quita de la cola de listos
-    readyQueue.erase(firstArrivedIt);
+    // Lo sacamos de la cola de listos
+    readyQueue.erase(readyQueue.begin());
 }
 
 bool FCFSScheduler::isPreemptive() const
