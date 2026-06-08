@@ -7,6 +7,8 @@
 #include "roundrobinscheduler.h"
 #include "priorityscheduler.h"
 #include "prioritypreemptivescheduler.h"
+#include "generatorform.h"
+#include "newprocessform.h"
 
 MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWindow), simulationRunning(false)
 {
@@ -183,7 +185,18 @@ void MainWindow::on_generateButton_clicked()
     on_pauseButton_clicked();
 
     int count = ui->processCountSpinBox->value();
-    simulator.generateRandomProcesses(count, 10, 5, 5);
+
+    GeneratorForm form(this);
+
+    if (form.exec() == QDialog::Accepted)
+    {
+        simulator.generateRandomProcesses(count, form.getMaxBurst(), form.getMaxIOBurst(), form.getMaxPriority());
+    }
+    else
+    {
+        ui->statusbar->showMessage("Se pauso la simulación y no se generaron procesos", 3000);
+        return;
+    }
 
     // Limpiar historial del Gantt
     ganttHistory.clear();
@@ -422,4 +435,24 @@ bool MainWindow::isSimulationComplete() const
     return true;
 }
 
+void MainWindow::on_pushButton_clicked()
+{
+    if (simulator.getCurrentTick() != 0)
+    {
+        ui->statusbar->showMessage("No se pueden añadir procesos manualmente después de comenzar la simulación", 3000);
+        return;
+    }
+
+    NewProcessForm form(this);
+
+    if (form.exec() == QDialog::Accepted)
+    {
+        simulator.addProcess(new Process(simulator.getAllProcesses().size() + 1, form.getBurstTime(), form.getIOBurstTime(), form.getPriority(), form.getArrivalTime()));
+        updateProcessTable();
+    }
+    else
+    {
+        return;
+    }
+}
 

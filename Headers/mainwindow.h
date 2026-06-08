@@ -29,6 +29,8 @@ private slots:
 
     void on_generateButton_clicked();
 
+    void on_pushButton_clicked();
+
 private:
     Ui::MainWindow *ui;
     Simulator simulator;

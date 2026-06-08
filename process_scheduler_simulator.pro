@@ -22,7 +22,9 @@ SOURCES += \
     Sources/srtfscheduler.cpp \
     Sources/roundrobinscheduler.cpp \
     Sources/priorityscheduler.cpp \
-    Sources/prioritypreemptivescheduler.cpp
+    Sources/prioritypreemptivescheduler.cpp \
+    Sources/generatorform.cpp \
+    Sources/newprocessform.cpp
 
 HEADERS += \
     Headers/fcfsscheduler.h \
@@ -35,10 +37,14 @@ HEADERS += \
     Headers/srtfscheduler.h \
     Headers/roundrobinscheduler.h \
     Headers/priorityscheduler.h \
-    Headers/prioritypreemptivescheduler.h
+    Headers/prioritypreemptivescheduler.h \
+    Headers/generatorform.h \
+    Headers/newprocessform.h
 
 FORMS += \
-    Forms/mainwindow.ui
+    Forms/mainwindow.ui \
+    Forms/generatorform.ui \
+    Forms/newprocessform.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
